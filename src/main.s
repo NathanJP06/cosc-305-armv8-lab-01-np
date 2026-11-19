@@ -3,8 +3,18 @@
 .global main
 .type main, %function
 main:
-    // TODO: replace this branch with your implementation.
-    b not_implemented
+    // Save the caller's return address; bl overwrites x30, so restore it before ret.
+    str x30, [sp, #-16]!
+
+    ldr x0, =demo_array
+    ldr x1, =demo_length
+    ldr x1, [x1]
+    ldr x2, =demo_results
+    bl analyze_array
+
+    mov x0, #0
+    ldr x30, [sp], #16
+    ret
 .size main, .-main
 .section .note.GNU-stack,"",@progbits
 
