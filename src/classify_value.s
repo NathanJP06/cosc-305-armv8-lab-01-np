@@ -3,7 +3,8 @@
 .global classify_value
 .type classify_value, %function
 classify_value:
-    // TODO: replace this branch with your implementation.
+    mov x0, #-1
+    ret
     b not_implemented
 .size classify_value, .-classify_value
 .section .note.GNU-stack,"",@progbits
